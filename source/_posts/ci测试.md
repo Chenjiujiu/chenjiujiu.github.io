@@ -10,4 +10,4 @@ keywords:
 description:
 ---
 ##ci测试
-{% note %} 测试测试测试测试 {% endnote %}
+{% note %} aa测试测试测试测试 {% endnote %}
