@@ -19,7 +19,7 @@ return gulp.src('./public/**/*.html')
        removeComments: true,
        minifyJS: true,
        minifyCSS: true,
-       minifyURLs: true,
+       minifyURLs: true
   }))
   .pipe(gulp.dest('./public'))
 });

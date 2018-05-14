@@ -38,7 +38,7 @@ post:
     link: 本文链接
     license_title: 版权声明
 #    license_content: "本博客所有文章除特别声明外，均采用 %s 许可协议。转载请注明出处！"
-    license_content: "请随意转载，但务必保留作者署名和原文链接"
+    license_content: "本博客所有文章采用 %s 许可协议,转载请注明出处"
 page:
   totally: 共有
   tags: 标签
