@@ -116,7 +116,11 @@ git status -s/ git status --short
 - `[abc]`匹配任何一个列在方括号中的字符(一个a或一个b或一个c)；
 - 问号`(?)`只匹配一个任意字符；
 - `[0-9]` 表示匹配所有 0 到 9 的数字)。 
+<<<<<<< HEAD
 - 两个星号`(**)`表示匹配任意中间目录，比如`a/**/z` 可以匹配 a/z, a/b/z 或 a/b/c/z等。  
+=======
+- 两个星号(**) 表示匹配任意中间目录，比如a/**/z 可以匹配 a/z, a/b/z 或 a/b/c/z等。  
+>>>>>>> 034d2d30c346d5381546c1355558aa97dad775c3
 
 **提示**：GitHub 有一个十分详细的针对数十种项目及编程语言的 .gitignore 文件列表，你可以在 http://github.com/github/gitignore 找到它。
 
@@ -250,12 +254,15 @@ $ git merge --no-ff -m "合并描述" dev
 
 //将分支maint合并到当前分支中，但不要自动进行新的提交
 $ git merge --no-commit maint 
+<<<<<<< HEAD
 
 //合并不相关历史
 git pull 失败 ,提示：fatal: refusing to merge unrelated histories
 
 在进行git pull 时，添加一个可选项
 git pull origin master --allow-unrelated-histories
+=======
+>>>>>>> 034d2d30c346d5381546c1355558aa97dad775c3
 ```
 
 ### 4.4删除分支
@@ -268,6 +275,10 @@ $ git branch -D <name>  //删除某分支
 $ git push origin --delete dev2
 ```
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 034d2d30c346d5381546c1355558aa97dad775c3
 ## 5.远程仓库
 ### 5.1创建ssh key
 查看用户目录下有没有.ssh目录和id_rsa，id_rsa.pub两个文件  
@@ -371,6 +382,12 @@ $ git remote show origin
     master pushes to master (fast-forwardable)
 ```
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 034d2d30c346d5381546c1355558aa97dad775c3
 ## 6.标签管理
 ### 6.1添加标签
 切换到要打标签的分支
