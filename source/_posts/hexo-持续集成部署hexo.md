@@ -248,4 +248,4 @@ git push -u origin master:src
 你可以可以使用travis把博客部署到多个地方，在.travis.yml后继续添加命令即可
 
 ## 后话
-持续集成有点忙，毕竟需要在虚拟机中clone你的github仓库，然后安装插件，再编译运行，然后把结果push回github，但是这个不影响博客发布了，在本地使用hexo s -debug 测试好 就好了，没那么急这一两分钟上线
+持续集成有点慢，毕竟需要在虚拟机中clone你的github仓库，然后安装插件，再编译运行，然后把结果push回github，但是这个不影响博客发布了，在本地使用hexo s -debug 测试好 就好了，没那么急这一两分钟上线
