@@ -85,7 +85,7 @@ search:
   limit: 10000
 
 baidu_url_submit:
-  count: 10
+  count: 100
   host: blog.chenjiujiu.com
   token: vlW77hhjqWBcrabx
   path: urls.txt
