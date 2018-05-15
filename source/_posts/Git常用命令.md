@@ -6,8 +6,10 @@ date: 2016-02-11 10:58:35
 tags: github
 id: gjsy-0211105835
 categories: 工具使用
-keywords: github的简单入门以及常用命令
+keywords: github,git命令
+description: github的简单入门以及常用命令
 ---
+
 ## 前言
 {% note warning %} 如果你还不知道git是什么的话建议你看看[廖雪峰的git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)，我觉得比较适合新手入门，博主在这就不再重复介绍了，本博客总结一些GIT的常用命令，以备不时之需 {% endnote %}
 
