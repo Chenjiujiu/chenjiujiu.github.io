@@ -17,6 +17,7 @@ script:
   - hexo g && gulp
 
 after_script:
+  - hexo d
   - cd ./public
   - git init
   - git config user.name "chenjiujiu" 
