@@ -93,5 +93,8 @@ baidu_url_submit:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
+  - type: git
+    repo: git@github.com:chenjiujiu/chenjiujiu.github.io.git
+    branch: master
   - type: baidu_url_submitter
 

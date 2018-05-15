@@ -18,18 +18,7 @@ script:
 
 after_script:
   - hexo d
-  - cd ./public
-  - git init
-  - git config user.name "chenjiujiu" 
-  - git config user.email "cjiujiu@icloud.com"  
-  - git add .
-  - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
-  - git push --force --quiet "https://${ci}@${GH_REF}" master:master  #Travis_Token是在Travis中配置环境变量的名称
-
 branches:
   only:
     - src
-env:
- global:
-   - GH_REF: github.com/chenjiujiu/chenjiujiu.github.io.git  
 
