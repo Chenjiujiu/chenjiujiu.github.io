@@ -85,16 +85,14 @@ search:
   limit: 10000
 
 baidu_url_submit:
-  count: 100
+  count: 10
   host: blog.chenjiujiu.com
   token: vlW77hhjqWBcrabx
-  path: baidu_urls.txt
+  path: urls.txt
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  - type: git
-    repo: git@github.com:chenjiujiu/chenjiujiu.github.io.git
-    branch: master
   - type: baidu_url_submitter
 
