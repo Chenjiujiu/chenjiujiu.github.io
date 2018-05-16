@@ -1,0 +1,319 @@
+<!DOCTYPE html><html class="theme-next gemini use-motion" lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>!function(e,t,o,c,i,a,n){e.DaoVoiceObject=i,e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},e[i].l=1*new Date,a=t.createElement(o),n=t.getElementsByTagName(o)[0],a.async=1,a.src=c,a.charset="utf-8",n.parentNode.insertBefore(a,n)}(window,document,"script",("https:"==document.location.protocol?"https:":"http:")+"//widget.daovoice.io/widget/0f81ff2f.js","daovoice"),daovoice("init",{app_id:"c34bc455"}),daovoice("update")</script><link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css"><link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/avatar.png?v=6.2.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png?v=6.2.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.2.0"><link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"6.2.0",sidebar:{position:"right",display:"post",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!1,fastclick:!1,lazyload:!1,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><meta name="description" content="使用Travis CI持续集成部署hexo到github"><meta name="keywords" content="hexo持续集成、Travis CI、hexo部署、hexo源码管理"><meta property="og:type" content="article"><meta property="og:title" content="hexo-Travis CI 持续集成部署hexo"><meta property="og:url" content="http://blog.chenjiujiu.com/blog/rjaz-0914212247.html"><meta property="og:site_name" content="大毛的修仙日志"><meta property="og:description" content="使用Travis CI持续集成部署hexo到github"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://blog.chenjiujiu.com/images/pic-hexo/addprofile.png"><meta property="og:image" content="https://blog.chenjiujiu.com/images/pic-hexo/openfile.png"><meta property="og:image" content="https://blog.chenjiujiu.com/images/pic-hexo/syncgithub.png"><meta property="og:image" content="https://blog.chenjiujiu.com/images/pic-hexo/travis.png"><meta property="og:image" content="https://blog.chenjiujiu.com/images/pic-hexo/createtoken.png"><meta property="og:image" content="https://blog.chenjiujiu.com/images/pic-hexo/ruby-v.png"><meta property="og:image" content="https://blog.chenjiujiu.com/images/pic-hexo/addtoken.png"><meta property="og:updated_time" content="2018-05-16T18:25:19.740Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="hexo-Travis CI 持续集成部署hexo"><meta name="twitter:description" content="使用Travis CI持续集成部署hexo到github"><meta name="twitter:image" content="https://blog.chenjiujiu.com/images/pic-hexo/addprofile.png"><link rel="canonical" href="http://blog.chenjiujiu.com/blog/rjaz-0914212247.html"><script type="text/javascript" id="page.configurations">CONFIG.page={sidebar:""}</script><title>hexo-Travis CI 持续集成部署hexo | 大毛的修仙日志</title><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?f1e9c7b577e39d73a0ff58c825988fb3";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><noscript><style type="text/css">.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-right page-post-detail"><div class="headband"></div> <a href="https://blog.chenjiujiu.com" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513;color:#fff;position:absolute;top:0;border:0;left:0;transform:scale(-1,1)" aria-hidden="true"><path d="M0 0 115 115 130 115 142 142 250 250 250 0Z"></path><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4L133.7 101.6C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">大毛的修仙日志</span><span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">一只致力于全栈开发的苦行僧</h1></div><div class="site-nav-toggle"> <button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://blog.chenjiujiu.com/blog/rjaz-0914212247.html"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="陈赳赳"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="大毛的修仙日志"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">hexo-Travis CI 持续集成部署hexo</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2017-09-14 21:22:47" itemprop="dateCreated datePublished" datetime="2017-09-14T21:22:47+00:00">2017-09-14</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件安装/" itemprop="url" rel="index"><span itemprop="name">软件安装</span></a></span></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i> 阅读次数：<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span><div class="post-description">使用Travis CI持续集成部署hexo到github</div></div></header><div class="post-body" itemprop="articleBody"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><div class="note info"><p>刚把博客迁移到github上，但是hexo只是把编译之后的文件发布到github上，博客原文件只是保存在本地机器上，不方便切换机器以及博客源码的备份，网上找了几种办法，至于为什么最后还是用持续集成做且看下面分析</p></div><a id="more"></a><h2 id="hexo源码备份管理"><a href="#hexo源码备份管理" class="headerlink" title="hexo源码备份管理"></a>hexo源码备份管理</h2><p>bolg源码管理方法大概有这几种把</p><ol><li><p>使用网盘来管理;但是每次换电脑都要下载一遍，每次写完了也需要上传来更新.</p></li><li><p>使用github来管理; hexo本来就是搭在github上，打在云虚拟机上另外再说，使用github来管理好处不用再多说了，具体用法就是把源文件push到博客的分支上，用分支来保存源文件，master分支来保存编译后的静态页面；</p></li><li><p>使用最新’hexo-deployer-git’，由于没有发布在npm上，所以只能从git上安装,支持源码和博客的部署,代码如下</p><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">deploy:</span></span><br><span class="line">  - type: git</span><br><span class="line"><span class="symbol">    repo:</span> git@github.com:<span class="params">&lt;username&gt;</span>/<span class="params">&lt;username&gt;</span>.github.io.git</span><br><span class="line"><span class="symbol">    branch:</span> master</span><br><span class="line">  - type: git</span><br><span class="line"><span class="symbol">    repo:</span> git@github.com:<span class="params">&lt;username&gt;</span>/<span class="params">&lt;username&gt;</span>.github.io.git</span><br><span class="line"><span class="symbol">    branch:</span> src</span><br><span class="line"><span class="symbol">    extend_dirs:</span> /</span><br><span class="line"><span class="symbol">    ignore_hidden:</span> false</span><br><span class="line"><span class="symbol">    ignore_pattern:</span></span><br><span class="line"><span class="symbol">        public:</span> .</span><br></pre></td></tr></table></figure></li></ol><p>但是发现一个问题，首次部署时候正常，但是之后部署就回吧主题文件themes也发布到master分支上。除非你每次部署的时候的手动删除.deploy文件夹,猜测原因是因为源码部署吧themes添加到了.deploy文件夹种，导致下一次会把主题文件部署上，如果在忽略文件种把themes文件忽略的话源码的提交也会忽略themes文件，暂时没找到解决办法，如有施主知道如何解决麻烦在下方留言给贫道，这种写法没法中间添加操作，所以看第四种吧。</p><ol start="4"><li>由于hexo生成出来的静态页面带有很多的空格，那么久需要我们对生成的文件来进行压缩，压缩之后再发布以及上传源码，一系列操作每次写完博客还是挺烦的</li></ol><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo clean；</span><br><span class="line">git g；</span><br><span class="line">gulp；</span><br><span class="line">hexo d；</span><br><span class="line">git <span class="keyword">add</span><span class="bash"> .</span></span><br><span class="line"><span class="bash">git commit --all -m <span class="string">'updata'</span></span></span><br><span class="line"><span class="bash">git push</span></span><br></pre></td></tr></table></figure><p>这个世界不愧是懒人驱动的啊!使用持续集成来吧操作简化，本地只需要负责提交更新到github，由travis得虚拟机来完成一些列的清空，压缩，重新编译，以及部署的操作，下面就开始具体介绍了</p><h2 id="1-什么是Travis-CI"><a href="#1-什么是Travis-CI" class="headerlink" title="1.什么是Travis CI"></a>1.什么是Travis CI</h2><p>Travis CI 是一个的开源持续集成构建项目，它与jenkins的区别在于采用了yaml格式，不需要再本地搭建服务器，并且是高度集成 GitHub 的，所以对于开源项目还是非常友好的。<br>在github上，添加travis ci，当添加的项目有code push的时候，会推送通知到travis，随之根据设置好的脚本文件来执行一系列的程序。</p><h2 id="2-准备条件"><a href="#2-准备条件" class="headerlink" title="2.准备条件"></a>2.准备条件</h2><p>有一个github账号并且搭建好了hexo的静态页面</p><h2 id="3-注册Travis-CI"><a href="#3-注册Travis-CI" class="headerlink" title="3.注册Travis CI"></a>3.注册Travis CI</h2><p>第一步总是很容易的,打开<a href="https://travis-ci.org" target="_blank" rel="noopener">Travis CI</a>官网,注册或者直接是哟github第三方登录</p><h2 id="4-添加Travis-CI管理的项目"><a href="#4-添加Travis-CI管理的项目" class="headerlink" title="4.添加Travis CI管理的项目"></a>4.添加Travis CI管理的项目</h2><p>在右上角你的账户名点击进入 profile,在这可以看到你的github里面的项目,选择是需要进行持续集成的项目<br><img src="https://blog.chenjiujiu.com/images/pic-hexo/addprofile.png" alt="addprofile"><br>如果没有看到你的项目你可以是有左边de在Repositories tab页点击Sync now同步你的github项目。选中项目将默认的off改变为on开启项目的持续集成。<br><img src="https://blog.chenjiujiu.com/images/pic-hexo/openfile.png" alt="addprofile"><br>如果没有你的项目那么应该是还没同步过来点击同步按钮来实现同步<br><img src="https://blog.chenjiujiu.com/images/pic-hexo/syncgithub.png" alt="addprofile"><br>然后点击设置,勾选下面者这几项<br><img src="https://blog.chenjiujiu.com/images/pic-hexo/travis.png" alt="addprofile"><br>到此 Travis虽然读取到了github文件但是却没权限进行修改和push,我们需要为travis添加一个Access Token</p><h2 id="5-创建一个新的Access-Token"><a href="#5-创建一个新的Access-Token" class="headerlink" title="5.创建一个新的Access Token"></a>5.创建一个新的Access Token</h2><p>在Github的setting页面，左侧面板选择Developer settings然后Personal access tokens, 右上角点击Generate new token。生成token时候需要确定访问scope，这里我们选择第一个repo即可。重要：生成的token只有第一次可见，一定要保存下来备用。<br><img src="https://blog.chenjiujiu.com/images/pic-hexo/createtoken.png" alt="createtoken"></p><h2 id="6-加密Token"><a href="#6-加密Token" class="headerlink" title="6.加密Token"></a>6.加密Token</h2><h3 id="可选操作：除非你对于Travis-CI保存你的密钥不信任，才需要做，否则可以直接跳过省事"><a href="#可选操作：除非你对于Travis-CI保存你的密钥不信任，才需要做，否则可以直接跳过省事" class="headerlink" title="(可选操作：除非你对于Travis CI保存你的密钥不信任，才需要做，否则可以直接跳过省事)"></a>(可选操作：除非你对于Travis CI保存你的密钥不信任，才需要做，否则可以直接跳过省事)</h3><ol><li><p>准备Travis命令行工具，需要依赖ruby环境。对于Windows环境，可以使用<a href="https://rubyinstaller.org/downloads/" target="_blank" rel="noopener">这里</a>的安装包，安装完成后可用<code>ruby -v</code>检查。<br>请安装2.4.x版本。<br><img src="https://blog.chenjiujiu.com/images/pic-hexo/ruby-v.png" alt="ruby"><br><strong>注意:</strong>不要安装2.5版本。暂时不支持。会报错:</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Error installing travis: The <span class="keyword">last</span> <span class="built_in">version</span> <span class="keyword">of</span> ffi (&gt;= <span class="number">1.3</span><span class="number">.0</span>) <span class="keyword">to</span> support your Ruby &amp; RubyGems was <span class="number">1.9</span><span class="number">.18</span>. Try installing <span class="keyword">it</span> <span class="keyword">with</span> gem install ffi -v <span class="number">1.9</span><span class="number">.18</span> <span class="keyword">and</span> <span class="keyword">then</span> <span class="built_in">running</span> <span class="keyword">the</span> current command again ffi requires Ruby <span class="built_in">version</span> &lt; <span class="number">2.5</span>, &gt;= <span class="number">2.0</span>. The current ruby <span class="built_in">version</span> <span class="keyword">is</span> <span class="number">2.5</span><span class="number">.0</span>.</span><br></pre></td></tr></table></figure></li><li><p>安装命令行工具，参考<a href="https://github.com/travis-ci/travis.rb#installation" target="_blank" rel="noopener">这里</a>官方文档：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem <span class="keyword">install</span> travis</span><br></pre></td></tr></table></figure></li></ol><p>安装慢的可以使用国内镜像安装 <a href="http://gems.ruby-china.org" target="_blank" rel="noopener">Ruby China</a></p><ol start="3"><li><p>验证travis<br>使用travis -v来验证travis是否安装成功，<br>如果显示版本号则表示安装成功，否则安装失败，重复1，2</p></li><li><p>登录加密token<br>输入travis login，会提示你需要输入github用户名和密码，</p></li></ol><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ travis login</span><br><span class="line">We need your GitHub login <span class="keyword">to</span> identify you.</span><br><span class="line">This information will <span class="keyword">not</span> be sent <span class="keyword">to</span> Travis CI, only <span class="keyword">to</span> api.github.com.</span><br><span class="line">The password will <span class="keyword">not</span> be displayed.</span><br><span class="line"><span class="keyword">Try</span> running <span class="keyword">with</span> --github-token <span class="keyword">or</span> --<span class="keyword">auto</span> <span class="keyword">if</span> you don<span class="comment">'t want to enter your password anyway.</span></span><br><span class="line">Username: xxx@xxx.xxx</span><br><span class="line">Password <span class="keyword">for</span> xxx@xxx.xxx: </span><br><span class="line">Successfully logged <span class="keyword">in</span> <span class="keyword">as</span> demo!</span><br></pre></td></tr></table></figure><p>登陆成功后，开始加密，代码如下：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">travis encrypt -r <span class="tag">&lt;<span class="name">github</span> <span class="attr">name</span>&gt;</span>/<span class="tag">&lt;<span class="name">github</span> <span class="attr">repo</span>&gt;</span> GH_Token=XXX</span><br></pre></td></tr></table></figure><p>加密成功会生成一串秘钥，例如：<br></p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Please <span class="built_in">add</span> <span class="keyword">the</span> following <span class="built_in">to</span> your .travis.yml <span class="built_in">file</span>:</span><br><span class="line">  secure: <span class="string">"OrEeqU0z6GJdC6Sx/XI7AMiQ8NM9GwPpZkVDq6cBHcD6OlSppkSwm6JvopTR\newLDTdtbk/dxKurUzwTeRbplIEe9DiyVDCzkeEiJGfgfq7woh+GRo+q6+UIWLE\n3nowpI9AzXt7iB</span></span><br></pre></td></tr></table></figure><p></p><p>把输出的secure:”xxxx”复制保存，</p><h2 id="7-添加token"><a href="#7-添加token" class="headerlink" title="7.添加token"></a>7.添加token</h2><p>把获取到的token或者加密后的token设置到travis上，如下name地方随便输入一个token名字，value地方输入你的token或者加密后的token<br><img src="https://blog.chenjiujiu.com/images/pic-hexo/addtoken.png" alt="addtoken"></p><h2 id="8-配置gulpfile"><a href="#8-配置gulpfile" class="headerlink" title="8.配置gulpfile"></a>8.配置gulpfile</h2><p>因为hexo编译出来的html有大量空白，并且css，js文件都没有进行枷锁，为了性能，使用gulp来对文件进行压缩，当然你可以使用其他方法，由于gulp是在travis虚拟机上运行，本地就没必要再安装了，当然你感兴趣想试试就随便了，配置gulofil.js文件<br></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> cleancss = <span class="built_in">require</span>(<span class="string">'gulp-clean-css'</span>);</span><br><span class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</span><br><span class="line"><span class="keyword">var</span> htmlmin = <span class="built_in">require</span>(<span class="string">'gulp-htmlmin'</span>);</span><br><span class="line"><span class="keyword">var</span> htmlclean = <span class="built_in">require</span>(<span class="string">'gulp-htmlclean'</span>);</span><br><span class="line"><span class="keyword">var</span> imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>);</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 压缩 public 目录 css</span></span><br><span class="line"> gulp.task(<span class="string">'minify-css'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'./public/**/*.css'</span>)</span><br><span class="line">      .pipe(cleancss())</span><br><span class="line">      .pipe(gulp.dest(<span class="string">'./public'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 压缩 public 目录 html</span></span><br><span class="line">gulp.task(<span class="string">'minify-html'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> gulp.src(<span class="string">'./public/**/*.html'</span>)</span><br><span class="line">  .pipe(htmlclean())</span><br><span class="line">  .pipe(htmlmin(&#123;</span><br><span class="line">       removeComments: <span class="literal">true</span>,</span><br><span class="line">       minifyJS: <span class="literal">true</span>,</span><br><span class="line">       minifyCSS: <span class="literal">true</span>,</span><br><span class="line">       minifyURLs: <span class="literal">true</span>,</span><br><span class="line">  &#125;))</span><br><span class="line">  .pipe(gulp.dest(<span class="string">'./public'</span>))</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 压缩 public/js 目录 js</span></span><br><span class="line">gulp.task(<span class="string">'minify-js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'./public/**/*.js'</span>)</span><br><span class="line">      .pipe(uglify())</span><br><span class="line">      .pipe(gulp.dest(<span class="string">'./public'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 压缩图片任务</span></span><br><span class="line">    <span class="comment">// 在命令行输入 gulp images 启动此任务</span></span><br><span class="line">    gulp.task(<span class="string">'images'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 1. 找到图片</span></span><br><span class="line">      gulp.src(<span class="string">'./images/**/*.*'</span>)</span><br><span class="line">      <span class="comment">// 2. 压缩图片</span></span><br><span class="line">          .pipe(imagemin(&#123;</span><br><span class="line">              progressive: <span class="literal">true</span></span><br><span class="line">          &#125;))</span><br><span class="line">      <span class="comment">// 3. 另存图片</span></span><br><span class="line">          .pipe(gulp.dest(<span class="string">'./images'</span>))</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 执行 gulp 命令时执行的任务</span></span><br><span class="line">  gulp.task(<span class="string">'default'</span>, [</span><br><span class="line">      <span class="string">'minify-html'</span>,<span class="string">'minify-css'</span>,<span class="string">'minify-js'</span>,<span class="string">'images'</span></span><br><span class="line">  ]);</span><br></pre></td></tr></table></figure><p></p><p>然后在package.json文件中的dependencies内添加gulp运行依赖的包名<br></p><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"dependencies"</span>: &#123;</span><br><span class="line"><span class="comment">//添加的文件依赖</span></span><br><span class="line">  <span class="string">"gulp"</span>: <span class="string">"^3.9.1"</span>,</span><br><span class="line">  <span class="string">"gulp-clean-css"</span>: <span class="string">"^3.9.4"</span>,</span><br><span class="line">  <span class="string">"gulp-htmlclean"</span>: <span class="string">"^2.7.22"</span>,</span><br><span class="line">  <span class="string">"gulp-htmlmin"</span>: <span class="string">"^4.0.0"</span>,</span><br><span class="line">  <span class="string">"gulp-imagemin"</span>: <span class="string">"^4.1.0"</span>,</span><br><span class="line">  <span class="string">"gulp-uglify"</span>: <span class="string">"^3.0.0"</span>,</span><br><span class="line"><span class="comment">//end</span></span><br><span class="line">  <span class="string">"hexo"</span>: <span class="string">"^3.2.0"</span>,</span><br><span class="line">  <span class="string">"hexo-generator-archive"</span>: <span class="string">"^0.1.4"</span>,</span><br><span class="line">  <span class="string">"hexo-generator-category"</span>: <span class="string">"^0.1.3"</span>,</span><br><span class="line">  <span class="string">"hexo-generator-index"</span>: <span class="string">"^0.2.0"</span>,</span><br><span class="line">  <span class="string">"hexo-generator-tag"</span>: <span class="string">"^0.2.0"</span>,</span><br><span class="line">  <span class="string">"hexo-renderer-ejs"</span>: <span class="string">"^0.3.0"</span>,</span><br><span class="line">  <span class="string">"hexo-renderer-marked"</span>: <span class="string">"^0.3.0"</span>,</span><br><span class="line">  <span class="string">"hexo-renderer-stylus"</span>: <span class="string">"^0.3.1"</span>,</span><br><span class="line">  <span class="string">"hexo-server"</span>: <span class="string">"^0.2.0"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p></p><p>这样虚拟机在执行npm init的时候救会把gulp所依赖的包安装上</p><h2 id="9-配置-travis-yml"><a href="#9-配置-travis-yml" class="headerlink" title="9.配置.travis.yml"></a>9.配置.travis.yml</h2><p>在博客根目录创建文件.travis.yml,文件种写travis执行的程序代码,可以参考我的<br></p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">language</span>: node_js  #使用的语言</span><br><span class="line"><span class="attribute">node_js</span>: stable  #版本</span><br><span class="line"></span><br><span class="line"><span class="attribute">cache:</span></span><br><span class="line">    apt: true</span><br><span class="line">    <span class="attribute">directories:</span></span><br><span class="line">        - node_modules # 设置缓存不经常更改的内容</span><br><span class="line"><span class="attribute">before_install:</span></span><br><span class="line">    - export TZ='Asia/Beijin' # 更改时区</span><br><span class="line"><span class="attribute">install:</span></span><br><span class="line">  - npm install  #安装hexo及插件</span><br><span class="line">  - npm install -g gulp #安装gulp</span><br><span class="line"><span class="attribute">script:</span></span><br><span class="line">  - hexo clean  #清除原先的静态文件</span><br><span class="line">  - hexo g &amp;&amp; gulp #重新生成并压缩</span><br><span class="line"><span class="attribute">after_script:</span></span><br><span class="line">  - cd ./public</span><br><span class="line">  - git init</span><br><span class="line">  - git config user.name "chenjiujiu" </span><br><span class="line">  - git config user.email "cjiujiu@icloud.com"  </span><br><span class="line">  - git add .</span><br><span class="line">  - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合</span><br><span class="line">  - git push --force --quiet "https://$&#123;ci&#125;@$&#123;GH_REF&#125;" master:master  #ci</span><br><span class="line">  是在Travis中配置环境变量的名称</span><br><span class="line"><span class="attribute">branches:</span></span><br><span class="line">  only:</span><br><span class="line">    - src</span><br><span class="line"><span class="attribute">env:</span></span><br><span class="line"> global:</span><br><span class="line">   - GH_REF: github.com/chenjiujiu/chenjiujiu.github.io.git  </span><br><span class="line">    #设置GH_REF，注意更改yourname</span><br></pre></td></tr></table></figure><p></p><h2 id="10-到这就差不多结束了"><a href="#10-到这就差不多结束了" class="headerlink" title="10.到这就差不多结束了"></a>10.到这就差不多结束了</h2><p>在本地修改文件然后使用git命令提交到github源码仓库<br></p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> .</span></span><br><span class="line"><span class="bash">git commit -am <span class="string">"测试"</span></span></span><br><span class="line"><span class="bash">git push -u origin master:src</span></span><br></pre></td></tr></table></figure><p></p><p>等待几分钟后，travis会自动把public里面的静态文件push到master分支。blog成功部署<br>你可以可以使用travis把博客部署到多个地方，在.travis.yml后继续添加命令即可</p><h2 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h2><p>持续集成有点慢，毕竟需要在虚拟机中clone你的github仓库，然后安装插件，再编译运行，然后把结果push回github，但是这个不影响博客发布了，在本地使用hexo s -debug 测试好 就好了，没那么急这一两分钟上线</p></div><div><div><div style="text-align:center;color:silver;font-size:16px;margin:5px 0">-------------本文结束<i class="fa fa-heart"></i>感谢您的阅读-------------</div></div></div><div><div style="padding:10px 0;margin:20px auto;width:90%;text-align:center"><div>坚持原创技术分享，您的支持将鼓励我继续创作！</div> <button id="rewardButton" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'> <span>打赏</span></button><div id="QR" style="display:none"><div id="wechat" style="display:inline-block"> <img id="wechat_qr" src="/images/wechatReward.png" alt="陈赳赳 微信打赏"><p>微信打赏</p></div></div></div></div><div><ul class="post-copyright"><li class="post-copyright-author"> <strong>本文作者：</strong> 陈赳赳</li><li class="post-copyright-link"> <strong>本文链接：</strong> <a href="http://blog.chenjiujiu.com/blog/rjaz-0914212247.html" title="hexo-Travis CI 持续集成部署hexo">http://blog.chenjiujiu.com/blog/rjaz-0914212247.html</a></li><li class="post-copyright-license"> <strong>版权声明：</strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li></ul></div><footer class="post-footer"><div class="post-tags"><a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/blog/rjaz-0912103148.html" rel="next" title="hexo Next主题配置教程"><i class="fa fa-chevron-left"></i> hexo Next主题配置教程</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"></div></div></footer></div></article><div class="post-spread"></div></div></div><div class="comments" id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC8zNjM2Mi8xMjg5Nw=="></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="陈赳赳"><p class="site-author-name" itemprop="name">陈赳赳</p><p class="site-description motion-element" itemprop="description"></p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">6</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">4</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">4</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/Chenjiujiu" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:cjiujiu@icloud.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i> E-Mail</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-link"></i> 天帝宝库</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"> <a href="http://www.uisdc.com/" title="优设" target="_blank">优设</a></li><li class="links-of-blogroll-item"> <a href="http://www.zhangxinxu.com/" title="张鑫旭" target="_blank">张鑫旭</a></li><li class="links-of-blogroll-item"> <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank">Web前端导航</a></li><li class="links-of-blogroll-item"> <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank">前端书籍资料</a></li><li class="links-of-blogroll-item"> <a href="http://ife.baidu.com/" title="百度前端技术学院" target="_blank">百度前端技术学院</a></li><li class="links-of-blogroll-item"> <a href="http://wf.uisdc.com/cn/" title="google前端开发基础" target="_blank">google前端开发基础</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo源码备份管理"><span class="nav-text">hexo源码备份管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是Travis-CI"><span class="nav-text">1.什么是Travis CI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-准备条件"><span class="nav-text">2.准备条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-注册Travis-CI"><span class="nav-text">3.注册Travis CI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-添加Travis-CI管理的项目"><span class="nav-text">4.添加Travis CI管理的项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-创建一个新的Access-Token"><span class="nav-text">5.创建一个新的Access Token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-加密Token"><span class="nav-text">6.加密Token</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可选操作：除非你对于Travis-CI保存你的密钥不信任，才需要做，否则可以直接跳过省事"><span class="nav-text">(可选操作：除非你对于Travis CI保存你的密钥不信任，才需要做，否则可以直接跳过省事)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-添加token"><span class="nav-text">7.添加token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-配置gulpfile"><span class="nav-text">8.配置gulpfile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-配置-travis-yml"><span class="nav-text">9.配置.travis.yml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-到这就差不多结束了"><span class="nav-text">10.到这就差不多结束了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后话"><span class="nav-text">后话</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span><span class="with-love" id="animate"><i class="fa fa-heart"></i></span> <span class="author" itemprop="copyrightHolder">chenjijiu Copyright © 粤ICP备18016538号</span></div><div class="busuanzi-count"><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="site-uv" title="总访客量"><i class="fa fa-user"></i> 总访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人次</span> <span>|</span><span class="site-pv" title="总访问量"><i class="fa fa-eye"></i> 总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script><script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script><script type="text/javascript">!function(e,t){var n,c=e.getElementsByTagName(t)[0];"function"!=typeof LivereTower&&((n=e.createElement(t)).src="https://cdn-city.livere.com/js/embed.dist.js",n.async=!0,c.parentNode.insertBefore(n,c))}(document,"script")</script><script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script><style>.copy-btn{display:inline-block;padding:6px 12px;font-size:13px;font-weight:700;line-height:20px;color:#333;white-space:nowrap;vertical-align:middle;cursor:pointer;background-color:#eee;background-image:linear-gradient(#fcfcfc,#eee);border:1px solid #d5d5d5;border-radius:3px;user-select:none;outline:0}.highlight-wrap .copy-btn{transition:opacity .3s ease-in-out;opacity:0;padding:2px 6px;position:absolute;right:4px;top:8px}.highlight-wrap .copy-btn:focus,.highlight-wrap:hover .copy-btn{opacity:1}.highlight-wrap{position:relative}</style><script>$(".highlight").each(function(t,e){var n=$("<div>").addClass("highlight-wrap");$(e).after(n),n.append($("<button>").addClass("copy-btn").append("复制").on("click",function(t){var e=$(this).parent().find(".code").find(".line").map(function(t,e){return $(e).text()}).toArray().join("\n"),n=document.createElement("textarea");document.body.appendChild(n),n.style.position="absolute",n.style.top="0px",n.style.left="0px",n.value=e,n.select(),n.focus();var o=document.execCommand("copy");document.body.removeChild(n),o?$(this).text("Copied"):$(this).text("Copy failed"),$(this).blur()})).on("mouseleave",function(t){var e=$(this).find(".copy-btn");setTimeout(function(){e.text("复制")},300)}).append(e)})</script></body></html><script type="text/javascript" src="/js/src/love.js"></script>
