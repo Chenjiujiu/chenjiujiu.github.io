@@ -812,7 +812,7 @@ lazyload: false
 
 # Progress bar in the top during page loading.
 # Dependencies: https://github.com/theme-next/theme-next-pace
-pace: true
+pace: fase
 # Themes list:
 #pace-theme-big-counter
 #pace-theme-bounce
