@@ -28,7 +28,7 @@ after_script:
 
   - git push --force --quiet "https://chenjiujiu:${coding}@${CO_REF}" master:master
 
-  - git push --force --quiet "https://${gitee}@${GE_REF}" master:master
+  - git push --force --quiet "https://chenjiujiu:${gitee}@${GE_REF}" master:master
 
 branches:
   only:
