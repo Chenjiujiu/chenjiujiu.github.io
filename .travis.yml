@@ -26,16 +26,11 @@ after_script:
   - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"  # 提交记录包含时间 跟上面更改时区配合
   - git push --force --quiet "https://${ci}@${GH_REF}" master:master
 
-  - git push --force --quiet "https://chenjiujiu:${coding}@${CO_REF}" master:master
-
-  - git push --force --quiet "https://chenjiujiu:${gitee}@${GE_REF}" master:master
-
 branches:
   only:
     - src
 env:
  global:
    - GH_REF: github.com/chenjiujiu/chenjiujiu.github.io.git
-   - CO_REF: git.coding.net/chenjiujiu/chenjiujiu.coding.io.git
-   - GE_REF: gitee.com/chenjiujiu/chenjiujiu.gitee.io.git
+
 
